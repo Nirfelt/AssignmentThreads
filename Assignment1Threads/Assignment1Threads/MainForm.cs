@@ -16,5 +16,40 @@ namespace Assignment1Threads
         {
             InitializeComponent();
         }
+
+        private void btnOpenMusic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlayMusic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStopMusic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStartDisplay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStopDisplay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStartTriangle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStopTriangle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
