@@ -11,13 +11,23 @@ namespace Assignment1Threads
 {
     public class ThreadMusic
     {
+        //Variables
         private SoundPlayer snd = null;
         private string path = string.Empty;
 
+        /// <summary>
+        /// Constructor
+        /// Takes path to .wav-file
+        /// </summary>
+        /// <param name="path"></param>
         public ThreadMusic(string path)
         {
             this.path = path;
         }
+
+        /// <summary>
+        /// Method to play chosen .wav-file
+        /// </summary>
         public void PlayMusic()
         {
             try
@@ -31,7 +41,6 @@ namespace Assignment1Threads
             catch (ThreadAbortException)
             {
                 snd.Stop();
-                //System.Windows.Forms.MessageBox.Show("Abort");
                 throw;
             }
         }
