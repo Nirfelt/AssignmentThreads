@@ -11,8 +11,8 @@ namespace Assignment1Threads
 {
     public class ThreadMusic
     {
-        SoundPlayer snd = null;
-        string path = string.Empty;
+        private SoundPlayer snd = null;
+        private string path = string.Empty;
 
         public ThreadMusic(string path)
         {
