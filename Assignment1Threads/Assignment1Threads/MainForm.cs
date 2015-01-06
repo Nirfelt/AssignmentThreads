@@ -14,7 +14,6 @@ namespace Assignment1Threads
     public partial class MainForm : Form
     {
         //Variables
-        private ThreadDisplay display;
         private ThreadMusic music;
         private Thread musicThread;
         private Thread displayThread;
@@ -23,7 +22,6 @@ namespace Assignment1Threads
         public MainForm()
         {
             InitializeComponent();
-            display = new ThreadDisplay();
 
             btnPlayMusic.Enabled = false;
             btnStopMusic.Enabled = false;
@@ -77,12 +75,18 @@ namespace Assignment1Threads
 
         private void btnStartDisplay_Click(object sender, EventArgs e)
         {
-
+            //MessageBox.Show(DateTime.Now.ToString("hh:mm:ss"));
+            displayThread = new Thread(new ThreadStart(displayClock));
+            displayThread.Start();
+            btnStartDisplay.Enabled = false;
+            btnStopDisplay.Enabled = true;
         }
 
         private void btnStopDisplay_Click(object sender, EventArgs e)
         {
-
+            displayThread.Abort();
+            btnStartDisplay.Enabled = true;
+            btnStopDisplay.Enabled = false;
         }
 
         /// <summary>
@@ -168,6 +172,31 @@ namespace Assignment1Threads
         {
             if(point + 1 == 360) return 0;
             return point + 1;
+        }
+
+        /// <summary>
+        /// Displays a clock from mashinetime that updates once per second
+        /// </summary>
+        private void displayClock()
+        {
+            try
+            {
+                //Loop to draw and update the triangle position
+                while (true)
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        lblClock.Text = DateTime.Now.ToString("hh:mm:ss");
+                        pnlDisplay.Invalidate();
+                        Application.DoEvents();
+                    }));
+                    Thread.Sleep(1000);
+                }
+            }
+            catch (ThreadAbortException)
+            {
+                throw;
+            }
         }
 
         /// <summary>
