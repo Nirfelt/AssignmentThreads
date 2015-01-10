@@ -137,6 +137,7 @@
             this.btnRun.TabIndex = 9;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnClear
             // 
@@ -146,6 +147,7 @@
             this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // pnlStatus
             // 
@@ -168,9 +170,9 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(387, 358);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(35, 13);
+            this.lblStatus.Size = new System.Drawing.Size(74, 13);
             this.lblStatus.TabIndex = 13;
-            this.lblStatus.Text = "label6";
+            this.lblStatus.Text = "Run for match";
             // 
             // label7
             // 
@@ -233,7 +235,6 @@
             this.Controls.Add(this.lstbWriter);
             this.Name = "MainForm";
             this.Text = "Concurrent Read/Write";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
