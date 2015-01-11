@@ -29,23 +29,24 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cBoxNotifyUser = new System.Windows.Forms.CheckBox();
+            this.txtReplace = new System.Windows.Forms.TextBox();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuFile = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSource = new System.Windows.Forms.TabPage();
-            this.tabDestination = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.rtxtSource = new System.Windows.Forms.RichTextBox();
+            this.tabDestination = new System.Windows.Forms.TabPage();
             this.rtxtDestination = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.cBoxNotifyUser = new System.Windows.Forms.CheckBox();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateDestination = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.lblChanges = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuFile.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -56,8 +57,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cBoxNotifyUser);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtReplace);
+            this.groupBox1.Controls.Add(this.txtFind);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
@@ -66,6 +67,50 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Find and Replace";
+            // 
+            // cBoxNotifyUser
+            // 
+            this.cBoxNotifyUser.AutoSize = true;
+            this.cBoxNotifyUser.Checked = true;
+            this.cBoxNotifyUser.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cBoxNotifyUser.Location = new System.Drawing.Point(14, 89);
+            this.cBoxNotifyUser.Name = "cBoxNotifyUser";
+            this.cBoxNotifyUser.Size = new System.Drawing.Size(152, 17);
+            this.cBoxNotifyUser.TabIndex = 4;
+            this.cBoxNotifyUser.Text = "Notify user on every match";
+            this.cBoxNotifyUser.UseVisualStyleBackColor = true;
+            // 
+            // txtReplace
+            // 
+            this.txtReplace.Location = new System.Drawing.Point(89, 54);
+            this.txtReplace.Name = "txtReplace";
+            this.txtReplace.Size = new System.Drawing.Size(312, 20);
+            this.txtReplace.TabIndex = 3;
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(89, 28);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(312, 20);
+            this.txtFind.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Replace with:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Find:";
             // 
             // menuFile
             // 
@@ -80,11 +125,17 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.openToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -111,6 +162,16 @@
             this.tabSource.Text = "Source";
             this.tabSource.UseVisualStyleBackColor = true;
             // 
+            // rtxtSource
+            // 
+            this.rtxtSource.BackColor = System.Drawing.SystemColors.Control;
+            this.rtxtSource.Location = new System.Drawing.Point(6, 6);
+            this.rtxtSource.Name = "rtxtSource";
+            this.rtxtSource.ReadOnly = true;
+            this.rtxtSource.Size = new System.Drawing.Size(566, 307);
+            this.rtxtSource.TabIndex = 0;
+            this.rtxtSource.Text = "";
+            // 
             // tabDestination
             // 
             this.tabDestination.Controls.Add(this.rtxtDestination);
@@ -122,77 +183,14 @@
             this.tabDestination.Text = "Destination";
             this.tabDestination.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Find:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Replace with:";
-            // 
-            // rtxtSource
-            // 
-            this.rtxtSource.Location = new System.Drawing.Point(6, 6);
-            this.rtxtSource.Name = "rtxtSource";
-            this.rtxtSource.Size = new System.Drawing.Size(566, 307);
-            this.rtxtSource.TabIndex = 0;
-            this.rtxtSource.Text = "";
-            // 
             // rtxtDestination
             // 
             this.rtxtDestination.Location = new System.Drawing.Point(6, 6);
             this.rtxtDestination.Name = "rtxtDestination";
+            this.rtxtDestination.ReadOnly = true;
             this.rtxtDestination.Size = new System.Drawing.Size(566, 307);
             this.rtxtDestination.TabIndex = 0;
             this.rtxtDestination.Text = "";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(89, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(312, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(89, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // cBoxNotifyUser
-            // 
-            this.cBoxNotifyUser.AutoSize = true;
-            this.cBoxNotifyUser.Checked = true;
-            this.cBoxNotifyUser.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cBoxNotifyUser.Location = new System.Drawing.Point(14, 89);
-            this.cBoxNotifyUser.Name = "cBoxNotifyUser";
-            this.cBoxNotifyUser.Size = new System.Drawing.Size(152, 17);
-            this.cBoxNotifyUser.TabIndex = 4;
-            this.cBoxNotifyUser.Text = "Notify user on every match";
-            this.cBoxNotifyUser.UseVisualStyleBackColor = true;
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
             // 
             // btnCreateDestination
             // 
@@ -202,6 +200,26 @@
             this.btnCreateDestination.TabIndex = 3;
             this.btnCreateDestination.Text = "Create the Destination File";
             this.btnCreateDestination.UseVisualStyleBackColor = true;
+            this.btnCreateDestination.Click += new System.EventHandler(this.btnCreateDestination_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(442, 142);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(154, 23);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Clear Dest. and remove mark";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // lblChanges
+            // 
+            this.lblChanges.AutoSize = true;
+            this.lblChanges.Location = new System.Drawing.Point(257, 158);
+            this.lblChanges.Name = "lblChanges";
+            this.lblChanges.Size = new System.Drawing.Size(86, 13);
+            this.lblChanges.TabIndex = 5;
+            this.lblChanges.Text = "0 changes made";
             // 
             // MainForm
             // 
@@ -209,6 +227,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(608, 531);
+            this.Controls.Add(this.lblChanges);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCreateDestination);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
@@ -232,14 +252,13 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cBoxNotifyUser;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtReplace;
+        private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuFile;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -248,6 +267,8 @@
         private System.Windows.Forms.TabPage tabDestination;
         private System.Windows.Forms.RichTextBox rtxtDestination;
         private System.Windows.Forms.Button btnCreateDestination;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblChanges;
     }
 }
 
