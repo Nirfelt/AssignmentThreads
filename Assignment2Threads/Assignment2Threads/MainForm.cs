@@ -22,7 +22,6 @@ namespace Assignment2Threads
         private Writer writer;
         private Reader reader;
         private CharacterBuffer cBuffer;
-        private Object lockObj;
         private char[] cToTransfer;
          
         /// <summary>
@@ -33,7 +32,6 @@ namespace Assignment2Threads
         {
             InitializeComponent();
             pnlStatus.BackColor = Color.Black;
-            lockObj = new Object();
             rbtnSync.Checked = true;
         }
 
@@ -48,23 +46,15 @@ namespace Assignment2Threads
             ClearGUI();
             cToTransfer = txbStringToTransfer.Text.ToCharArray();//create char array of input
             int size = cToTransfer.Length;
-            cBuffer = new CharacterBuffer();//makes new buffer
-            writer = new Writer(lockObj, cBuffer, cToTransfer, lstbWriter);
-            reader = new Reader(lockObj, cBuffer, cToTransfer.Length, lstbReader);
-            //check if sync or async
-            //create threads accordingly
-            if (rbtnSync.Checked) {
-                t1 = new Thread(new ThreadStart(writer.WriteSync));
-                t2 = new Thread(new ThreadStart(reader.ReadSync));
-            }
-            else
-            {
-                t1 = new Thread(new ThreadStart(writer.WriteAsync));
-                t2 = new Thread(new ThreadStart(reader.ReadAsync));
-            }
+            cBuffer = new CharacterBuffer(lstbWriter, lstbReader, rbtnSync.Checked);//makes new buffer
+            writer = new Writer(cBuffer, cToTransfer);
+            reader = new Reader(cBuffer, cToTransfer.Length);
+            t1 = new Thread(new ThreadStart(writer.Write));
+            t2 = new Thread(new ThreadStart(reader.Read));
             t1.Start();
             t2.Start();
             btnRun.Enabled = false;
+            btnClear.Enabled = false;
             //add subscriber to readerthread
             reader.Done += CheckMatch;
         }
@@ -105,6 +95,7 @@ namespace Assignment2Threads
                 lblRecieved.Invoke(new MethodInvoker(delegate
                 {
                     UpdateCheck(e.Output);
+                    btnClear.Enabled = true;
                     btnRun.Enabled = true;
                 }));
             }
@@ -112,6 +103,7 @@ namespace Assignment2Threads
             {
                 UpdateCheck(e.Output);
                 btnRun.Enabled = true;
+                btnClear.Enabled = true;
             }
             if (sender != null)
             {
