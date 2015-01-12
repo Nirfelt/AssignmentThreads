@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(784, 464);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Christamas gift delivery system";
             this.ResumeLayout(false);
 
         }
