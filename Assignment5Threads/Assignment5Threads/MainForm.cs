@@ -16,6 +16,9 @@ namespace Assignment5Threads
         private bool q2Pressed;
         private bool q3Pressed;
         private bool q4Pressed;
+        private House house;
+        private HouseController hC;
+        private CarGenerator cGen;
 
         public MainForm()
         {
@@ -24,6 +27,12 @@ namespace Assignment5Threads
             q2Pressed = false;
             q3Pressed = false;
             q4Pressed = false;
+
+            house = new House(lstbQueue1, lstbQueue2, lstbQueue3, lstbQueue4, lstbParked, lstbExit, lblQueue1, lblQueue2, lblQueue3, lblQueue4, lblParked);
+            hC = new HouseController(house);
+            cGen = new CarGenerator(house);
+            lblParked.Text = house.Size.ToString();
+            cGen.Start();
         }
 
         /// <summary>

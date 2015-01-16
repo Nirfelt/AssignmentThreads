@@ -47,9 +47,11 @@
             this.lblQueue1 = new System.Windows.Forms.Label();
             this.lstbExit = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblExit = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lstbParked = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblParked = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -233,9 +235,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.lstbParked);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.lblExit);
+            this.groupBox2.Controls.Add(this.lblParked);
             this.groupBox2.Controls.Add(this.lstbExit);
             this.groupBox2.Location = new System.Drawing.Point(529, 12);
             this.groupBox2.Name = "groupBox2";
@@ -244,23 +248,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parking House";
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Parked Cars:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(192, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Exit";
             // 
-            // lblExit
+            // label6
             // 
-            this.lblExit.AutoSize = true;
-            this.lblExit.Location = new System.Drawing.Point(77, 28);
-            this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(13, 13);
-            this.lblExit.TabIndex = 6;
-            this.lblExit.Text = "0";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Park";
             // 
             // lstbParked
             // 
@@ -269,6 +273,24 @@
             this.lstbParked.Name = "lstbParked";
             this.lstbParked.Size = new System.Drawing.Size(180, 264);
             this.lstbParked.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 315);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Free spots:";
+            // 
+            // lblParked
+            // 
+            this.lblParked.AutoSize = true;
+            this.lblParked.Location = new System.Drawing.Point(71, 315);
+            this.lblParked.Name = "lblParked";
+            this.lblParked.Size = new System.Drawing.Size(13, 13);
+            this.lblParked.TabIndex = 6;
+            this.lblParked.Text = "0";
             // 
             // MainForm
             // 
@@ -311,8 +333,10 @@
         private System.Windows.Forms.ListBox lstbExit;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Label lblParked;
         private System.Windows.Forms.ListBox lstbParked;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brands.cs" />
     <Compile Include="Car.cs" />
-    <Compile Include="CarParker.cs" />
+    <Compile Include="CarGenerator.cs" />
+    <Compile Include="Colors.cs" />
     <Compile Include="House.cs" />
     <Compile Include="HouseController.cs" />
     <Compile Include="MainForm.cs">
