@@ -20,7 +20,7 @@ namespace Assignment5Threads
         private Task t5;
 
         private House house;
-        
+
         public HouseController(House house)
         {
             q1 = true;
@@ -29,7 +29,10 @@ namespace Assignment5Threads
             q4 = true;
 
             this.house = house;
+        }
 
+        public void Start()
+        {
             t1 = new Task(new Action(ParkQ1));
             t2 = new Task(new Action(ParkQ2));
             t3 = new Task(new Action(ParkQ3));
@@ -42,7 +45,7 @@ namespace Assignment5Threads
             t5.Start();
         }
 
-        public void ParkQ1()
+        private void ParkQ1()
         {
             while (q1)
             {
@@ -50,7 +53,7 @@ namespace Assignment5Threads
             }
         }
 
-        public void ParkQ2()
+        private void ParkQ2()
         {
             while (q2)
             {
@@ -58,7 +61,7 @@ namespace Assignment5Threads
             }
         }
 
-        public void ParkQ3()
+        private void ParkQ3()
         {
             while (q3)
             {
@@ -66,7 +69,7 @@ namespace Assignment5Threads
             }
         }
 
-        public void ParkQ4()
+        private void ParkQ4()
         {
             while (q4)
             {
@@ -74,7 +77,7 @@ namespace Assignment5Threads
             }
         }
 
-        public void RemoveCars()
+        private void RemoveCars()
         {
             while (true)
             {

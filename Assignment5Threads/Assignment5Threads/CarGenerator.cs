@@ -9,6 +9,9 @@ namespace Assignment5Threads
 {
     public class CarGenerator
     {
+        private const int intervalStart = 500;
+        private const int intervalStop = 2000;
+
         private House house;
         private Task t1;
         private Task t2;
@@ -56,7 +59,7 @@ namespace Assignment5Threads
         {
             while (gen1)
             {
-                Thread.Sleep(rnd.Next(100, 5000));
+                Thread.Sleep(rnd.Next(intervalStart, intervalStop));
                 house.AddToQ1(new Car());
             }
         }
@@ -65,7 +68,7 @@ namespace Assignment5Threads
         {
             while (gen2)
             {
-                Thread.Sleep(rnd.Next(100, 5000));
+                Thread.Sleep(rnd.Next(intervalStart, intervalStop));
                 house.AddToQ2(new Car());
             }
         }
@@ -74,7 +77,7 @@ namespace Assignment5Threads
         {
             while (gen3)
             {
-                Thread.Sleep(rnd.Next(100, 5000));
+                Thread.Sleep(rnd.Next(intervalStart, intervalStop));
                 house.AddToQ3(new Car());
             }
         }
@@ -83,7 +86,7 @@ namespace Assignment5Threads
         {
             while (gen4)
             {
-                Thread.Sleep(rnd.Next(100, 5000));
+                Thread.Sleep(rnd.Next(intervalStart, intervalStop));
                 house.AddToQ4(new Car());
             }
         }

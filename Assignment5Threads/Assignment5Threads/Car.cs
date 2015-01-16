@@ -9,19 +9,6 @@ namespace Assignment5Threads
     public class Car
     {
         private DateTime parkingTime;
-        private Brands brand;
-        private Colors color;
-        private Random rnd;
-
-        public Colors Color
-        {
-            get { return color; }
-        }
-
-        public Brands Brand
-        {
-            get { return brand; }
-        }
 
         public DateTime ParkingTime
         {
@@ -31,9 +18,6 @@ namespace Assignment5Threads
 
         public Car()
         {
-            rnd = new Random();
-            color = (Colors)rnd.Next(0, Enum.GetNames(typeof(Colors)).Length);
-            brand = (Brands)rnd.Next(0, Enum.GetNames(typeof(Brands)).Length);
             parkingTime = DateTime.Now;
         }
     }
