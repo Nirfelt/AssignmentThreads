@@ -8,6 +8,7 @@ namespace Assignment5Threads
 {
     public class HouseController
     {
+        //Variables
         private bool q1;
         private bool q2;
         private bool q3;
@@ -21,6 +22,10 @@ namespace Assignment5Threads
 
         private House house;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="house"></param>
         public HouseController(House house)
         {
             q1 = true;
@@ -31,6 +36,9 @@ namespace Assignment5Threads
             this.house = house;
         }
 
+        /// <summary>
+        /// Method for starting HouseController tasks
+        /// </summary>
         public void Start()
         {
             t1 = new Task(new Action(ParkQ1));
@@ -45,6 +53,9 @@ namespace Assignment5Threads
             t5.Start();
         }
 
+        /// <summary>
+        /// Adds cars from queue 1 to house
+        /// </summary>
         private void ParkQ1()
         {
             while (q1)
@@ -53,6 +64,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Adds cars from queue 2 to house
+        /// </summary>
         private void ParkQ2()
         {
             while (q2)
@@ -61,6 +75,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Adds cars from queue 3 to house
+        /// </summary>
         private void ParkQ3()
         {
             while (q3)
@@ -69,6 +86,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Adds cars from queue 4 to house
+        /// </summary>
         private void ParkQ4()
         {
             while (q4)
@@ -77,6 +97,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Removes cars from house
+        /// </summary>
         private void RemoveCars()
         {
             while (true)

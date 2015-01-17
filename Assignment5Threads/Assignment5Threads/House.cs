@@ -9,6 +9,7 @@ namespace Assignment5Threads
 {
     public class House
     {
+        //Varables
         private const int maxSpots = 20;
         private const int parkStart = 1;
         private const int parkStop = 50;
@@ -28,6 +29,7 @@ namespace Assignment5Threads
         private int count;
         private bool houseFull;
 
+        //Properties
         public int Count
         {
             get { return count; }
@@ -39,10 +41,11 @@ namespace Assignment5Threads
             get { return house.Length; }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public House()
         {
-            
-
             house = new Car[maxSpots];
 
             q1 = new Queue<Car>();
@@ -57,6 +60,10 @@ namespace Assignment5Threads
             houseFull = false;
         }
 
+        /// <summary>
+        /// Adds car to queue 1
+        /// </summary>
+        /// <param name="c"></param>
         public void AddToQ1(Car c)
         {
             if (q1.Count < qLength)
@@ -68,6 +75,11 @@ namespace Assignment5Threads
                 }
             }
         }
+
+        /// <summary>
+        /// Adds car to queue 2
+        /// </summary>
+        /// <param name="c"></param>
         public void AddToQ2(Car c)
         {
             if (q2.Count < qLength)
@@ -79,6 +91,11 @@ namespace Assignment5Threads
                 }
             }
         }
+
+        /// <summary>
+        /// Adds car to queue 3
+        /// </summary>
+        /// <param name="c"></param>
         public void AddToQ3(Car c)
         {
             if (q3.Count < qLength)
@@ -90,6 +107,11 @@ namespace Assignment5Threads
                 }
             }
         }
+
+        /// <summary>
+        /// Adds car to queue 4
+        /// </summary>
+        /// <param name="c"></param>
         public void AddToQ4(Car c)
         {
             if (q4.Count < qLength)
@@ -102,6 +124,10 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Checks the house for cars to be removed
+        /// Sets houseFull = false if car is removed
+        /// </summary>
         public void CheckHouse()
         {
             for (int i = 0; i < house.Length; i++)
@@ -122,6 +148,11 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Check if a specific car is to be removed
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private bool CheckCar(Car c)
         {
             int result = DateTime.Compare(c.ParkingTime, DateTime.Now);
@@ -136,7 +167,7 @@ namespace Assignment5Threads
         {
             switch (q)
             {
-                case 1:
+                case 1://Queue 1
                     lock (lockObj)
                     {
                         if (q1.Count == 0)
@@ -154,7 +185,7 @@ namespace Assignment5Threads
                         }
                     }
                     break;
-                case 2:
+                case 2://Queue 2
                     lock (lockObj)
                     {
                         if (q2.Count == 0)
@@ -172,7 +203,7 @@ namespace Assignment5Threads
                         }
                     }
                     break;
-                case 3:
+                case 3://Queue 3
                     lock (lockObj)
                     {
                         if (q3.Count == 0)
@@ -190,7 +221,7 @@ namespace Assignment5Threads
                         }
                     }
                     break;
-                case 4:
+                case 4://Queue 4
                     lock (lockObj)
                     {
                         if (q4.Count == 0)
@@ -214,6 +245,12 @@ namespace Assignment5Threads
 
         }
 
+        /// <summary>
+        /// Searches house for empty spot
+        /// Sets houseFull = true if no spots free
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         private bool FindSpot(out int i)
         {
             for (i = 0; i < house.Length; i++)
@@ -231,6 +268,9 @@ namespace Assignment5Threads
             return false;
         }
 
+        /// <summary>
+        /// Writes output to console
+        /// </summary>
         private void UpdateConsole()
         {
             string output = string.Empty;

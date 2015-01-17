@@ -9,6 +9,7 @@ namespace Assignment5Threads
 {
     public class CarGenerator
     {
+        //Variables
         private const int intervalStart = 500;
         private const int intervalStop = 2000;
 
@@ -24,6 +25,10 @@ namespace Assignment5Threads
         private bool gen3;
         private bool gen4;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="house"></param>
         public CarGenerator(House house)
         {
             this.house = house;
@@ -35,6 +40,9 @@ namespace Assignment5Threads
             t4 = new Task(new Action(genQ4));
         }
 
+        /// <summary>
+        /// Starts tasks in CarGenerator
+        /// </summary>
         public void Start()
         {
             gen1 = true;
@@ -47,6 +55,9 @@ namespace Assignment5Threads
             t4.Start();
         }
 
+        /// <summary>
+        /// Stops tasks
+        /// </summary>
         public void Stop()
         {
             gen1 = false;
@@ -55,6 +66,9 @@ namespace Assignment5Threads
             gen4 = false;
         }
 
+        /// <summary>
+        /// Generates cars for queue 1
+        /// </summary>
         private void genQ1()
         {
             while (gen1)
@@ -64,6 +78,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Generates cars for queue 2
+        /// </summary>
         private void genQ2()
         {
             while (gen2)
@@ -73,6 +90,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Generates cars for queue 3
+        /// </summary>
         private void genQ3()
         {
             while (gen3)
@@ -82,6 +102,9 @@ namespace Assignment5Threads
             }
         }
 
+        /// <summary>
+        /// Generates cars for queue 4
+        /// </summary>
         private void genQ4()
         {
             while (gen4)
